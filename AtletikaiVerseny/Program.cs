@@ -31,6 +31,19 @@ namespace AtletikaiVerseny
             
             Console.ReadKey();
         }
+        private static void Feladat03()
+        {
+            Console.WriteLine("3. feladat: Egyesületek:");
+            foreach (var i in lista)
+            {
+                if (!i.Egyesulet.Contains(i.Egyesulet))
+                {
+                    Console.WriteLine(i.Egyesulet);
+                }
+
+            }
+
+        }
         private static void Feladat02()
         {
             foreach (var i in lista)
