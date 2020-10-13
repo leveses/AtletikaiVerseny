@@ -31,9 +31,18 @@ namespace AtletikaiVerseny
             
             Console.ReadKey();
         }
-
-        
-
+        private static void Feladat02()
+        {
+            foreach (var i in lista)
+            {
+                konyvtar.Add(i.VezNev + " " + i.KerNev, i.Ugras);
+            }
+            Console.WriteLine("2. feladat: Nevek és ugrások");
+            foreach (var i in konyvtar)
+            {
+                Console.WriteLine(i.Key + "\t" + i.Value);
+            }
+        }
         private static void Beolvas()
         {
             StreamReader file = new StreamReader("tavol.csv");
