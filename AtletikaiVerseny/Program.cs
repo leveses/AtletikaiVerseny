@@ -11,8 +11,8 @@ namespace AtletikaiVerseny
     class Program
     {
         static List<Atleta> lista = new List<Atleta>();
-        static List<string> nevek = new List<string>();
         static Dictionary<string, int> konyvtar = new Dictionary<string, int>();
+
         static void Main(string[] args)
         {
             Beolvas();
@@ -28,7 +28,6 @@ namespace AtletikaiVerseny
             Console.WriteLine();
             Feladat06();
 
-            
             Console.ReadKey();
         }
         private static void Feladat06()
@@ -37,14 +36,14 @@ namespace AtletikaiVerseny
             StreamWriter file = new StreamWriter("versenyzok.txt");
             foreach (var i in lista)
             {
-                file.WriteLine($"{i.Rajtszam};{i.VezNev} {i.KerNev}");
+                file.WriteLine($"{i.Rajtszam};{i.Nev}");
             }
             file.Close();
         }
         private static void Feladat05()
         {
             double sum = 0;
-            int x = 0;
+            int darab = 0;
             foreach (var i in lista)
             {
                 sum += i.Ugras;
@@ -55,10 +54,10 @@ namespace AtletikaiVerseny
             {
                 if (i.Ugras < sum)
                 {
-                    x++;
+                    darab++;
                 }
             }
-            Console.WriteLine($"Átlag alatt lévő ugrások száma: {x}");
+            Console.WriteLine($"Átlag alatt lévő ugrások száma: {darab}");
         }
         private static void Feladat04()
         {
@@ -69,8 +68,9 @@ namespace AtletikaiVerseny
                 if (max < i.Ugras)
                 {
                     max = i.Ugras;
-                    Console.WriteLine($"{i.VezNev} {i.KerNev}: {max} cm");
+                    Console.WriteLine($"{i.Nev}: {max} cm");
                 }
+                
             }
 
         }
@@ -79,8 +79,10 @@ namespace AtletikaiVerseny
             Console.WriteLine("3. feladat: Egyesületek:");
             foreach (var i in lista)
             {
-                if (!i.Egyesulet.Contains(i.Egyesulet))
+                
+                if (!konyvtar.ContainsKey(i.Egyesulet))
                 {
+                    konyvtar.Add(i.Egyesulet, 0);
                     Console.WriteLine(i.Egyesulet);
                 }
 
@@ -91,7 +93,7 @@ namespace AtletikaiVerseny
         {
             foreach (var i in lista)
             {
-                konyvtar.Add(i.VezNev + " " + i.KerNev, i.Ugras);
+                konyvtar.Add(i.Nev, i.Ugras);
             }
             Console.WriteLine("2. feladat: Nevek és ugrások");
             foreach (var i in konyvtar)
