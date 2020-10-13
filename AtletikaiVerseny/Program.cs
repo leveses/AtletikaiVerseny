@@ -31,6 +31,16 @@ namespace AtletikaiVerseny
             
             Console.ReadKey();
         }
+        private static void Feladat06()
+        {
+            Console.WriteLine("6. feladat: Adatok fájlba írása");
+            StreamWriter file = new StreamWriter("versenyzok.txt");
+            foreach (var i in lista)
+            {
+                file.WriteLine($"{i.Rajtszam};{i.VezNev} {i.KerNev}");
+            }
+            file.Close();
+        }
         private static void Feladat05()
         {
             double sum = 0;
