@@ -31,6 +31,20 @@ namespace AtletikaiVerseny
             
             Console.ReadKey();
         }
+        private static void Feladat04()
+        {
+            Console.WriteLine("4. feladat: Legnagyobb ugrás:");
+            int max = 0;
+            foreach (var i in lista)
+            {
+                if (max < i.Ugras)
+                {
+                    max = i.Ugras;
+                    Console.WriteLine($"{i.VezNev} {i.KerNev}: {max} cm");
+                }
+            }
+
+        }
         private static void Feladat03()
         {
             Console.WriteLine("3. feladat: Egyesületek:");
