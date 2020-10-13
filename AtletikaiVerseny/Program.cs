@@ -31,6 +31,25 @@ namespace AtletikaiVerseny
             
             Console.ReadKey();
         }
+        private static void Feladat05()
+        {
+            double sum = 0;
+            int x = 0;
+            foreach (var i in lista)
+            {
+                sum += i.Ugras;
+            }
+            sum = sum / lista.Count();
+            Console.Write("5. feladat: ");
+            foreach (var i in lista)
+            {
+                if (i.Ugras < sum)
+                {
+                    x++;
+                }
+            }
+            Console.WriteLine($"Átlag alatt lévő ugrások száma: {x}");
+        }
         private static void Feladat04()
         {
             Console.WriteLine("4. feladat: Legnagyobb ugrás:");
